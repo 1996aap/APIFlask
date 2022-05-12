@@ -32,7 +32,7 @@ postData() async {
   String url = 'http://10.42.0.1:5000/my_Post';
   var new_url = Uri.parse(url);
   My_QrCode myQrCode =
-      My_QrCode("Produto1", "xx/xx/xxxx", "yy/yy/yyyy", "0101", "10");
+      My_QrCode("Produto1", "xx/xx/xxxx", "yy/yy/yyyy", 1111, 11, true);
   String jsonUser = jsonEncode(myQrCode);
   print(jsonUser);
   http.Response response = await http.post(new_url,
@@ -53,12 +53,12 @@ class My_QrCode {
   String Produto;
   String Fabricacao;
   String Validade;
-  String Lote;
-  String Quantidade;
-  String Relacional;
+  int Lote;
+  int Quantidade;
+  bool Relacional;
 
-  My_QrCode(
-      this.Produto, this.Fabricacao, this.Validade, this.Lote, this.Quantidade, this.Relacional);
+  My_QrCode(this.Produto, this.Fabricacao, this.Validade, this.Lote,
+      this.Quantidade, this.Relacional);
   Map toJson() {
     return {
       'Produto': Produto,
@@ -66,7 +66,7 @@ class My_QrCode {
       'Validade': Validade,
       'Lote': Lote,
       'Quantidade': Quantidade,
-      'Relacional' : Relacional,
+      'Relacional': Relacional,
     };
   }
 }
